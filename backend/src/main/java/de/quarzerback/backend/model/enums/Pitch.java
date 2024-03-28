@@ -6,10 +6,10 @@ import lombok.Getter;
 @Getter
 @AllArgsConstructor
 public enum Pitch {
-    RASEN("Rasen"),
+    GRASS("Rasen"),
     KR1("KR1"),
     BSA("BSA"),
-    KAFIG("Käfig");
+    CAGE("Käfig");
 
     private final String pitchType;
 }

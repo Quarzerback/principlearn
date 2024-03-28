@@ -6,12 +6,12 @@ import lombok.Getter;
 @Getter
 @AllArgsConstructor
 public enum RoleInTeam {
-    SPIELER("Spieler"),
-    TRAINER("Trainer"),
-    BETREUER("Betreuer"),
-    PROBESPIELER("Probespieler"),
-    U17_SPIELER("U17-Spieler"),
-    ERSTE_MANNCHAFT("1. Mannschaft");
+    PLAYER("Spieler"),
+    COACH("Trainer"),
+    CREW("Betreuer"),
+    TEST_PLAYER("Probespieler"),
+    u17_PLAYER("U17-Spieler"),
+    FIRST_TEAM("1. Mannschaft");
 
     private final String displayName;
 }

@@ -6,11 +6,11 @@ import lombok.Getter;
 @Getter
 @AllArgsConstructor
 public enum Category {
-    PAROLE("Parole"),
-    PRINZIP("Prinzip"),
-    UNTERPRINZIP("Unterprinzip"),
-    HANDLUNGSOPTION("Handlungsoption"),
-    CODEWORT("Codewort");
+    SLOGAN("Parole"),
+    PRINCIPLE("Prinzip"),
+    SUB_PRINCIPLE("Unterprinzip"),
+    OPTION_FOR_ACTION("Handlungsoption"),
+    CODEWORD("Codewort");
 
     private final String displayName;
 }

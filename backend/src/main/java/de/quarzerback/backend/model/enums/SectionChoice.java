@@ -7,14 +7,14 @@ import lombok.Getter;
 @AllArgsConstructor
 public enum SectionChoice {
     WARMUP("Aufwärmen"),
-    TEAMSPIRIT("Teamgeist"),
-    SPIELFORM("Spielform"),
-    TORSCHUSS("Torschuss"),
-    ABSCHLUSSFORM("Abschlussform"),
-    LAEUFER("Läufe"),
+    TEAM_SPIRIT("Teamgeist"),
+    GAME_FORMAT("Spielform"),
+    SHOT_ON_GOAL("Torschuss"),
+    CONCLUSION_FORM("Abschlussform"),
+    RUNS("Läufe"),
     SPRINTS("Sprints"),
-    TW_TRAINING("TW-Training"),
-    ATHLETIK("Athletik");
+    GOALKEEPER_TRAINING("TW-Training"),
+    ATHLETICS("Athletik");
 
     private final String sectionName;
 }
