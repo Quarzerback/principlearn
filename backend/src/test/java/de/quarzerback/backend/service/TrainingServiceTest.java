@@ -11,13 +11,13 @@ import java.time.LocalTime;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.mockito.Mockito.mock;
 
-@SpringBootTest
-@RequiredArgsConstructor
 public class TrainingServiceTest {
 
-    private final TrainingService trainingService;
-    private final TrainingRepo trainingRepo;
+    private final TrainingRepo trainingRepo = mock(TrainingRepo.class);
+
+    private final TrainingService trainingService = new TrainingService(trainingRepo);
 
     @Test
     public void testAddTraining() {

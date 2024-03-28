@@ -6,13 +6,13 @@ import lombok.Getter;
 @Getter
 @AllArgsConstructor
 public enum SectionChoice {
-    AUFWAERMEN("Aufwärmen"),
-    TEAMGEIST("Teamgeist"),
+    WARMUP("Aufwärmen"),
+    TEAMSPIRIT("Teamgeist"),
     SPIELFORM("Spielform"),
     TORSCHUSS("Torschuss"),
     ABSCHLUSSFORM("Abschlussform"),
     LAEUFER("Läufe"),
-    SPRUNGEN("Springs"),
+    SPRINTS("Sprints"),
     TW_TRAINING("TW-Training"),
     ATHLETIK("Athletik");
 
