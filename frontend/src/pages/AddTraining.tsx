@@ -24,6 +24,7 @@ export default function AddTraining() {
         }));
     };
 
+    console.log(trainingData);
     const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
         e.preventDefault();
         try {
@@ -59,7 +60,6 @@ export default function AddTraining() {
                 <select name="intensity" value={trainingData.intensity || ''} onChange={handleChange} required>
                     <option value="">Select Intensity</option>
                     {Object.values(Intensity)
-                        .filter(value => typeof value === 'number')
                         .map((value) => (
                             <option key={value} value={value}>{value}</option>
                         ))}

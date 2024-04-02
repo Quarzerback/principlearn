@@ -36,18 +36,18 @@ export enum GameSection {
 }
 
 export enum Intensity {
-    ONE = 1,
-    TWO = 2,
-    THREE = 3,
-    FOUR = 4,
-    FIVE = 5
+    ONE = "ONE",
+    TWO = "TWO",
+    THREE = "THREE",
+    FOUR = "FOUR",
+    FIVE = "FIVE"
 }
 
 export enum Pitch {
-    GRASS = "Rasen",
+    GRASS = "GRASS",
     KR1 = "KR1",
     BSA = "BSA",
-    CAGE = "Käfig"
+    CAGE = "CAGE"
 }
 
 export enum Position {

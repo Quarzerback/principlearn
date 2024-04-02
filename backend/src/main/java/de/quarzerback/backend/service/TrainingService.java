@@ -2,6 +2,7 @@ package de.quarzerback.backend.service;
 
 import de.quarzerback.backend.model.Training;
 import de.quarzerback.backend.model.dtos.TrainingDto;
+import de.quarzerback.backend.model.enums.Intensity;
 import de.quarzerback.backend.repository.TrainingRepo;
 import org.springframework.stereotype.Service;
 import lombok.RequiredArgsConstructor;
