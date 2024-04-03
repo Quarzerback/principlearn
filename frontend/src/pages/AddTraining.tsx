@@ -39,32 +39,35 @@ export default function AddTraining() {
         <div>
             <h2>Add Training</h2>
             <form onSubmit={handleSubmit}>
-                <label>Date:</label>
-                <input type="date" name="date" value={trainingData.date} onChange={handleChange} required/><br/>
-
-                <label>Start Time:</label>
-                <input type="time" name="startTime" value={trainingData.startTime} onChange={handleChange}
+                <label htmlFor="date">Date:</label>
+                <input type="date" id="date" name="date" value={trainingData.date} onChange={handleChange}
                        required/><br/>
 
-                <label>End Time:</label>
-                <input type="time" name="endTime" value={trainingData.endTime} onChange={handleChange} required/><br/>
+                <label htmlFor="startTime">Start Time:</label>
+                <input type="time" id="startTime" name="startTime" value={trainingData.startTime}
+                       onChange={handleChange} required/><br/>
 
-                <label>Specific Coaching Points:</label>
-                <input type="text" name="specificCoachingPoints" value={trainingData.specificCoachingPoints}
+                <label htmlFor="endTime">End Time:</label>
+                <input type="time" id="endTime" name="endTime" value={trainingData.endTime} onChange={handleChange}
+                       required/><br/>
+
+                <label htmlFor="specificCoachingPoints">Specific Coaching Points:</label>
+                <input type="text" id="specificCoachingPoints" name="specificCoachingPoints"
+                       value={trainingData.specificCoachingPoints} onChange={handleChange}/><br/>
+
+                <label htmlFor="neededMaterial">Needed Material:</label>
+                <input type="text" id="neededMaterial" name="neededMaterial" value={trainingData.neededMaterial}
                        onChange={handleChange}/><br/>
 
-                <label>Needed Material:</label>
-                <input type="text" name="neededMaterial" value={trainingData.neededMaterial}
-                       onChange={handleChange}/><br/>
-
-                <select name="intensity" value={trainingData.intensity || ''} onChange={handleChange} required>
+                <select id="intensity" name="intensity" value={trainingData.intensity || ''} onChange={handleChange}
+                        required>
                     <option value="">Select Intensity</option>
-                    {Object.values(Intensity)
-                        .map((value) => (
-                            <option key={value} value={value}>{value}</option>
-                        ))}
+                    {Object.values(Intensity).map((value) => (
+                        <option key={value} value={value}>{value}</option>
+                    ))}
                 </select><br/>
-                <select name="pitch" value={trainingData.pitch || ''} onChange={handleChange} required>
+
+                <select id="pitch" name="pitch" value={trainingData.pitch || ''} onChange={handleChange} required>
                     <option value="">Select Pitch</option>
                     {Object.values(Pitch).map((value) => (
                         <option key={value} value={value}>{value}</option>

@@ -10,7 +10,7 @@ public enum RoleInTeam {
     COACH("Trainer"),
     CREW("Betreuer"),
     TEST_PLAYER("Probespieler"),
-    u17_PLAYER("U17-Spieler"),
+    U17_PLAYER("U17-Spieler"),
     FIRST_TEAM("1. Mannschaft");
 
     private final String displayName;

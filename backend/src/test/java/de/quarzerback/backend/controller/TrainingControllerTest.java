@@ -24,7 +24,7 @@ import static org.mockito.Mockito.when;
 @SpringBootTest
 @AutoConfigureMockMvc
 @DirtiesContext(classMode = DirtiesContext.ClassMode.BEFORE_EACH_TEST_METHOD)
-public class TrainingControllerTest {
+class TrainingControllerTest {
 
     @Autowired
     private MockMvc mockMvc;
@@ -36,7 +36,7 @@ public class TrainingControllerTest {
     private ObjectMapper objectMapper;
 
     @Test
-    public void testAddTraining() throws Exception {
+    void testAddTraining() throws Exception {
         // Given
         TrainingDto trainingDto = new TrainingDto();
         trainingDto.setDate(LocalDate.now());

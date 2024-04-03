@@ -1,5 +1,6 @@
 package de.quarzerback.backend.model;
 
+import de.quarzerback.backend.model.dtos.TrainingDto;
 import de.quarzerback.backend.model.enums.Intensity;
 import de.quarzerback.backend.model.enums.Pitch;
 import lombok.AllArgsConstructor;
@@ -26,4 +27,10 @@ public class Training {
     private Pitch pitch;
     private List<TrainingParticipants> participants;
     private List<Section> sections;
+
+    public Training(TrainingDto trainingDto) {
+        this(null, trainingDto.getDate(), trainingDto.getStartTime(), trainingDto.getEndTime(),
+                trainingDto.getSpecificCoachingPoints(), trainingDto.getNeededMaterial(), trainingDto.getIntensity(),
+                trainingDto.getPitch(), trainingDto.getParticipants(), trainingDto.getSections());
+    }
 }

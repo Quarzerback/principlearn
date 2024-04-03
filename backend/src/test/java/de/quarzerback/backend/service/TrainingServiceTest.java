@@ -8,7 +8,7 @@ import de.quarzerback.backend.model.dtos.TrainingDto;
 import de.quarzerback.backend.repository.TrainingRepo;
 import org.junit.jupiter.api.Test;
 
-public class TrainingServiceTest {
+class TrainingServiceTest {
 
     @Test
     void testAddTraining(){
