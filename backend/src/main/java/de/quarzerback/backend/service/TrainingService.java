@@ -6,6 +6,8 @@ import de.quarzerback.backend.repository.TrainingRepo;
 import org.springframework.stereotype.Service;
 import lombok.RequiredArgsConstructor;
 
+import java.util.List;
+
 @Service
 @RequiredArgsConstructor
 public class TrainingService {
@@ -14,5 +16,9 @@ public class TrainingService {
     public Training addTraining(TrainingDto trainingDto) {
         Training training = new Training(trainingDto);
         return trainingRepository.save(training);
+    }
+
+    public List<Training> getAllTrainings() {
+        return trainingRepository.findAll();
     }
 }

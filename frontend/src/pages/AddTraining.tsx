@@ -1,10 +1,10 @@
 import { useState, ChangeEvent, FormEvent } from "react";
 import { Intensity, Pitch } from "../types/enums.ts";
 import { addTraining } from "../utils/addTraining.ts"
-import { TrainingFormData } from "../types/training.ts";
+import { TrainingData } from "../types/trainingData.ts";
 
 export default function AddTraining() {
-    const initialTrainingData: TrainingFormData = {
+    const initialTrainingData: TrainingData = {
         date: '',
         startTime: '',
         endTime: '',
@@ -14,7 +14,7 @@ export default function AddTraining() {
         pitch: null
     };
 
-    const [trainingData, setTrainingData] = useState<TrainingFormData>(initialTrainingData);
+    const [trainingData, setTrainingData] = useState<TrainingData>(initialTrainingData);
 
     const handleChange = (e: ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
         const { name, value } = e.target;
