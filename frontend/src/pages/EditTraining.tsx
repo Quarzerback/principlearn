@@ -8,7 +8,7 @@ export type Props = {
     trainings: TrainingData[];
     fetchData: () => void;
 }
-export default function EditTraining(props : Props) {
+export default function EditTraining(props : Readonly<Props>) {
     const params = useParams();
     const navigate = useNavigate();
     const training = props.trainings.find(training => training.id === params.id);

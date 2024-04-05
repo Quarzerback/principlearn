@@ -35,7 +35,7 @@ export default function TrainingInputForm(props: Readonly<TrainingFormProps>) {
                 <input type="text" id="neededMaterial" name="neededMaterial" value={props.trainingData.neededMaterial}
                        onChange={props.handleChange}/><br/>
 
-                <select id="intensity" name="intensity" value={props.trainingData.intensity || ''}
+                <select id="intensity" name="intensity" value={props.trainingData.intensity ?? ''}
                         onChange={props.handleChange}
                         required>
                     <option value="">Select Intensity</option>
@@ -44,7 +44,7 @@ export default function TrainingInputForm(props: Readonly<TrainingFormProps>) {
                     ))}
                 </select><br/>
 
-                <select id="pitch" name="pitch" value={props.trainingData.pitch || ''} onChange={props.handleChange}
+                <select id="pitch" name="pitch" value={props.trainingData.pitch ?? ''} onChange={props.handleChange}
                         required>
                     <option value="">Select Pitch</option>
                     {Object.values(Pitch).map((value) => (
