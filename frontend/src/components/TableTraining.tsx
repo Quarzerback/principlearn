@@ -1,4 +1,5 @@
 import {TrainingData} from "../types/trainingData.ts";
+import {Link} from "react-router-dom";
 
 export type TableTrainingProps = {
     trainings: TrainingData[];
@@ -27,6 +28,9 @@ export default function TableTraining(props: Readonly<TableTrainingProps>) {
                     <td>{training.neededMaterial}</td>
                     <td>{training.intensity}</td>
                     <td>{training.pitch}</td>
+                    <td>
+                        <Link to={`/training/${training.id}`}>Details</Link>
+                    </td>
                 </tr>
             ))}
             </tbody>

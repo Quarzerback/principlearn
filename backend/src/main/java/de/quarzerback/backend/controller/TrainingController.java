@@ -26,4 +26,22 @@ public class TrainingController {
         List<Training> trainings = trainingService.getAllTrainings();
         return new ResponseEntity<>(trainings, HttpStatus.OK);
     }
+
+    @GetMapping("/{id}")
+    public ResponseEntity<Training> getTrainingById(@PathVariable String id) {
+        Training training = trainingService.getTrainingById(id);
+        return new ResponseEntity<>(training, HttpStatus.OK);
+    }
+
+    @PutMapping("/{id}")
+    public ResponseEntity<Training> updateTraining(@PathVariable String id, @RequestBody TrainingDto training) {
+        Training updatedTraining = trainingService.updateTraining(id, training);
+        return new ResponseEntity<>(updatedTraining, HttpStatus.OK);
+    }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<String> deleteTraining(@PathVariable String id) {
+        String message = trainingService.deleteTraining(id);
+        return new ResponseEntity<>(message, HttpStatus.OK);
+    }
 }

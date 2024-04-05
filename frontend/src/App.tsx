@@ -6,6 +6,8 @@ import Training from './pages/Training';
 import axios from "axios";
 import {useEffect, useState} from "react";
 import {TrainingData} from "./types/trainingData.ts";
+import TrainingDetails from "./pages/TrainingDetails.tsx";
+import EditTraining from "./pages/EditTraining.tsx";
 
 export default function App() {
     const [trainings, setTrainings] = useState<TrainingData[]>([]);
@@ -29,7 +31,9 @@ export default function App() {
                 <Routes>
                     <Route path="/" element={<Home />} />
                     <Route path="/training" element={<Training trainings={trainings} fetchData={fetchData}/>} />
-                    <Route path="/training/add" element={<AddTraining/>} />
+                    <Route path="/training/add" element={<AddTraining />} />
+                    <Route path="/training/:id" element={<TrainingDetails trainings={trainings} fetchData={fetchData}/>} />
+                    <Route path="/training/:id/edit" element={<EditTraining trainings={trainings} fetchData={fetchData}/>} />
                 </Routes>
             </Layout>
         </Router>

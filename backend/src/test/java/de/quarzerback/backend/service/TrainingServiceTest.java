@@ -16,14 +16,13 @@ import java.util.List;
 
 class TrainingServiceTest {
 
+    private final TrainingRepo trainingRepo = mock(TrainingRepo.class);
+    TrainingService trainingService = new TrainingService(trainingRepo);
     @Test
     void testAddTraining(){
         TrainingDto trainingDto = new TrainingDto();
-        TrainingRepo trainingRepo = mock(TrainingRepo.class);
 
         when(trainingRepo.save(any())).thenReturn(new Training());
-
-        TrainingService trainingService = new TrainingService(trainingRepo);
 
         Training result = trainingService.addTraining(trainingDto);
 
@@ -52,10 +51,7 @@ class TrainingServiceTest {
         training2.setNeededMaterial("Bibs, cones");
         dummyTrainings.add(training2);
 
-        TrainingRepo trainingRepo = mock(TrainingRepo.class);
         when(trainingRepo.findAll()).thenReturn(dummyTrainings);
-
-        TrainingService trainingService = new TrainingService(trainingRepo);
 
         List<Training> result = trainingService.getAllTrainings();
 
@@ -63,5 +59,71 @@ class TrainingServiceTest {
 
         assertNotNull(result);
         assertEquals(dummyTrainings.size(), result.size());
+    }
+
+    @Test
+    void testGetTrainingById(){
+        Training training = new Training();
+        training.setId("1");
+        training.setDate(LocalDate.of(2024, 4, 6));
+        training.setStartTime(LocalTime.of(9, 0));
+        training.setEndTime(LocalTime.of(11, 0));
+        training.setSpecificCoachingPoints("Improve passing skills");
+        training.setNeededMaterial("Cones, balls");
+
+        when(trainingRepo.findById("1")).thenReturn(java.util.Optional.of(training));
+
+        Training result = trainingService.getTrainingById("1");
+
+        verify(trainingRepo).findById("1");
+
+        assertNotNull(result);
+        assertEquals(training.getId(), result.getId());
+    }
+
+    @Test
+    void testUpdateTraining() {
+        String id = "1";
+        Training training = new Training(id, LocalDate.of(2024, 4, 6), LocalTime.of(9, 0),
+                LocalTime.of(11, 0), "Improve passing skills", "Cones, balls",
+                null, null, null,  null);
+
+        TrainingDto trainingDto = new TrainingDto(LocalDate.of(2024, 4, 6), LocalTime.of(10, 0),
+                LocalTime.of(12, 0), "Improve passing skills", "Cones, balls, pylons",
+                null, null, null,  null);
+
+        Training expectedTraining = new Training(id, LocalDate.of(2024, 4, 6), LocalTime.of(10, 0),
+                LocalTime.of(12, 0), "Improve passing skills", "Cones, balls, pylons",
+                null, null, null,  null);
+
+        when(trainingRepo.findById(id)).thenReturn(java.util.Optional.of(training));
+        when(trainingRepo.save(any())).thenReturn(expectedTraining);
+
+        Training result = trainingService.updateTraining(id, trainingDto);
+
+        verify(trainingRepo).findById(id);
+        verify(trainingRepo).save(any(Training.class));
+
+        assertNotNull(result);
+        assertEquals(expectedTraining, result);
+    }
+
+    @Test
+    void testDeleteTraining(){
+        Training training = new Training();
+        training.setId("1");
+        training.setDate(LocalDate.of(2024, 4, 6));
+        training.setStartTime(LocalTime.of(9, 0));
+        training.setEndTime(LocalTime.of(11, 0));
+        training.setSpecificCoachingPoints("Improve passing skills");
+        training.setNeededMaterial("Cones, balls");
+
+        when(trainingRepo.findById("1")).thenReturn(java.util.Optional.of(training));
+
+        String result = trainingService.deleteTraining("1");
+
+        verify(trainingRepo).deleteById("1");
+
+        assertNotNull(result);
     }
 }

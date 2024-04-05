@@ -84,4 +84,62 @@ class TrainingControllerTest {
                 .andExpect(MockMvcResultMatchers.jsonPath("$[0].id").value("1"))
                 .andExpect(MockMvcResultMatchers.jsonPath("$[1].id").value("2"));
     }
+
+    @Test
+    void testGetTrainingById() throws Exception {
+        // Given
+        Training training = new Training();
+        training.setId("1");
+        training.setDate(LocalDate.now());
+        training.setStartTime(LocalTime.now());
+        training.setEndTime(LocalTime.now().plusHours(1));
+        training.setSpecificCoachingPoints("Focus on passing drills");
+        training.setNeededMaterial("Cones, balls");
+
+        when(trainingService.getTrainingById("1")).thenReturn(training);
+
+        // When/Then
+        mockMvc.perform(MockMvcRequestBuilders.get("/api/trainings/1"))
+                .andExpect(MockMvcResultMatchers.status().isOk())
+                .andExpect(MockMvcResultMatchers.jsonPath("$.id").value("1"));
+    }
+
+    @Test
+    void testUpdateTraining() throws Exception {
+        // Given
+        TrainingDto trainingDto = new TrainingDto();
+        trainingDto.setDate(LocalDate.now());
+        trainingDto.setStartTime(LocalTime.now());
+        trainingDto.setEndTime(LocalTime.now().plusHours(1));
+        trainingDto.setSpecificCoachingPoints("Focus on passing drills");
+        trainingDto.setNeededMaterial("Cones, balls");
+
+        Training updatedTraining = new Training();
+        updatedTraining.setId("1");
+        updatedTraining.setDate(LocalDate.now());
+        updatedTraining.setStartTime(LocalTime.now());
+        updatedTraining.setEndTime(LocalTime.now().plusHours(1));
+        updatedTraining.setSpecificCoachingPoints("Focus on passing drills");
+        updatedTraining.setNeededMaterial("Cones, balls");
+
+        when(trainingService.updateTraining("1", trainingDto)).thenReturn(updatedTraining);
+
+        // When/Then
+        mockMvc.perform(MockMvcRequestBuilders.put("/api/trainings/1")
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .content(objectMapper.writeValueAsString(trainingDto)))
+                .andExpect(MockMvcResultMatchers.status().isOk())
+                .andExpect(MockMvcResultMatchers.jsonPath("$.id").value("1"));
+    }
+
+    @Test
+    void testDeleteTraining() throws Exception {
+        // Given
+        when(trainingService.deleteTraining("1")).thenReturn("Training with ID: 1 deleted.");
+
+        // When/Then
+        mockMvc.perform(MockMvcRequestBuilders.delete("/api/trainings/1"))
+                .andExpect(MockMvcResultMatchers.status().isOk())
+                .andExpect(MockMvcResultMatchers.content().string("Training with ID: 1 deleted."));
+    }
 }
