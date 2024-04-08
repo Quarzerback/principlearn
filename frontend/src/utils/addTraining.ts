@@ -1,7 +1,7 @@
 import axios from 'axios';
-import { TrainingFormData } from '../types/training.ts';
+import { TrainingData } from '../types/trainingData.ts';
 
-export const addTraining = async (trainingData: TrainingFormData): Promise<void> => {
+export const addTraining = async (trainingData: TrainingData): Promise<void> => {
     try {
         await axios.post('/api/trainings', trainingData);
         alert('Training data sent successfully!');

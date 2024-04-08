@@ -1,6 +1,7 @@
 import { Intensity, Pitch } from "./enums.ts";
 
-export type TrainingFormData = {
+export type TrainingData = {
+    id?: string;
     date: string;
     startTime: string;
     endTime: string;
