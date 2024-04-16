@@ -4,7 +4,7 @@ import { TrainingData } from '../types/trainingData.ts';
 export const addTraining = async (trainingData: TrainingData): Promise<void> => {
     try {
         await axios.post('/api/trainings', trainingData);
-        alert('Training data sent successfully!');
+        alert('Training created successfully!');
     } catch (error) {
         if (error instanceof Error) {
             alert('Error while sending training data: ' + error.message);

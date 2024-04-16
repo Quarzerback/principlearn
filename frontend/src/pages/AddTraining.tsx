@@ -1,9 +1,13 @@
 import { useState, ChangeEvent, FormEvent } from "react";
-import { addTraining } from "../utils/addTraining.ts"
-import { TrainingData } from "../types/trainingData.ts";
-import TrainingInputForm from "../components/TrainingInputForm.tsx";
+import { addTraining } from "../utils/addTraining";
+import { TrainingData } from "../types/trainingData";
+import TrainingInputForm from "../components/TrainingInputForm";
 
-export default function AddTraining() {
+type AddTrainingProps = {
+    fetchData: () => void;
+};
+
+export default function AddTraining(props: AddTrainingProps) {
     const initialTrainingData: TrainingData = {
         date: '',
         startTime: '',
@@ -16,8 +20,8 @@ export default function AddTraining() {
 
     const [trainingData, setTrainingData] = useState<TrainingData>(initialTrainingData);
 
-    const handleChange = (e: ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
-        const {name, value} = e.target;
+    const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
+        const { name, value } = e.target;
         setTrainingData(prevState => ({
             ...prevState,
             [name]: value
@@ -29,15 +33,23 @@ export default function AddTraining() {
         try {
             await addTraining(trainingData);
             setTrainingData(initialTrainingData);
+            props.fetchData();
         } catch (error) {
             console.error('Error while sending training data:', error);
+            alert('Failed to create training. Please try again.');
         }
     };
 
     const headlineName = "Add Training";
     const buttonName = "Create Training";
+
     return (
-        <TrainingInputForm trainingData={trainingData} handleChange={handleChange} handleSubmit={handleSubmit}
-                           headlineName={headlineName} buttonName={buttonName}/>
+        <TrainingInputForm
+            trainingData={trainingData}
+            handleChange={handleChange}
+            handleSubmit={handleSubmit}
+            headlineName={headlineName}
+            buttonName={buttonName}
+        />
     );
 }

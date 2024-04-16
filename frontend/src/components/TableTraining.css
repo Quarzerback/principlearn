@@ -1,0 +1,38 @@
+@import url("../utils/cssVariables.css");
+
+.training-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+}
+
+.training-table th,
+.training-table td {
+    padding: 12px;
+    text-align: left;
+    border-bottom: 1px solid #254a0c;
+}
+
+.training-table th {
+    background-color: #ccc13a;
+    color: #fff;
+}
+
+.training-table tr:nth-child(even) {
+    background-color: #567119;
+}
+
+.training-table tr:hover {
+    background-color: #3e3407;
+}
+
+.training-table a {
+    color: #254a0c;
+    text-decoration: none;
+}
+
+@media (max-width: 768px) {
+    .training-table {
+        overflow-x: auto;
+    }
+}
