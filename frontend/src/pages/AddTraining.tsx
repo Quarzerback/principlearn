@@ -7,7 +7,7 @@ type AddTrainingProps = {
     fetchData: () => void;
 };
 
-export default function AddTraining(props: AddTrainingProps) {
+export default function AddTraining(props: Readonly<AddTrainingProps>) {
     const initialTrainingData: TrainingData = {
         date: '',
         startTime: '',

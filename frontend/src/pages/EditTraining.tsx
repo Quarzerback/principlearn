@@ -9,7 +9,7 @@ type EditTrainingProps = {
     fetchData: () => void;
 };
 
-export default function EditTraining(props: EditTrainingProps) {
+export default function EditTraining(props: Readonly<EditTrainingProps>) {
     const { id } = useParams();
     const navigate = useNavigate();
     const training = props.trainings.find(training => training.id === id);
