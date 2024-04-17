@@ -8,7 +8,25 @@ import {useEffect, useState} from "react";
 import {TrainingData} from "./types/trainingData.ts";
 import TrainingDetails from "./pages/TrainingDetails.tsx";
 import EditTraining from "./pages/EditTraining.tsx";
+import { createTheme } from '@mui/material/styles';
+import {ThemeProvider} from "@mui/material";
 
+const theme = createTheme({
+    palette: {
+        primary: {
+            light: '#ccc13a',
+            main: '#9fc131',
+            dark: '#567119',
+            contrastText: '#fff',
+        },
+        secondary: {
+            light: '#3e3407',
+            main: '#254a0c',
+            dark: '#002884',
+            contrastText: '#fff',
+        },
+    },
+});
 export default function App() {
     const [trainings, setTrainings] = useState<TrainingData[]>([]);
 
@@ -26,16 +44,19 @@ export default function App() {
     }
 
     return (
-        <Router>
-            <Layout>
-                <Routes>
-                    <Route path="/" element={<Home />} />
-                    <Route path="/training" element={<Training trainings={trainings} fetchData={fetchData}/>} />
-                    <Route path="/training/add" element={<AddTraining />} />
-                    <Route path="/training/:id" element={<TrainingDetails trainings={trainings} fetchData={fetchData}/>} />
-                    <Route path="/training/:id/edit" element={<EditTraining trainings={trainings} fetchData={fetchData}/>} />
-                </Routes>
-            </Layout>
-        </Router>
+        <ThemeProvider theme={theme}>
+            <Router>
+                <Layout>
+                    <Routes>
+                        <Route path="/" element={<Home />} />
+                        <Route path="/training" element={<Training trainings={trainings} fetchData={fetchData}/>} />
+                        <Route path="/training/add" element={<AddTraining fetchData={fetchData}/>} />
+                        <Route path="/training/:id" element={<TrainingDetails trainings={trainings} fetchData={fetchData}/>} />
+                        <Route path="/training/:id/edit" element={<EditTraining trainings={trainings} fetchData={fetchData}/>} />
+                    </Routes>
+                </Layout>
+            </Router>
+        </ThemeProvider>
+
     );
 }

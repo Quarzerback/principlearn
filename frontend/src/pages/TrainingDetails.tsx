@@ -1,6 +1,7 @@
 import {TrainingData} from "../types/trainingData.ts";
 import {useNavigate, useParams} from "react-router-dom";
 import axios from "axios";
+import {Button} from "@mui/material";
 
 
 type TrainingDetailsProps={
@@ -49,8 +50,8 @@ export default function TrainingDetails(props: Readonly<TrainingDetailsProps>) {
                         </div>
                     </div>
                     <div>
-                        <button onClick={handleEdit}>Edit</button>
-                        <button onClick={handleDelete}>Delete</button>
+                        <Button variant="contained" color="primary" onClick={handleEdit}>Edit</Button>
+                        <Button variant="contained" color="secondary" onClick={handleDelete}>Delete</Button>
                     </div>
                 </> :
                 <>No Training found</>

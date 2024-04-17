@@ -1,0 +1,44 @@
+.add-container,
+.edit-container {
+    font-family: Arial, sans-serif;
+    background-color: #fff;
+    color: var(--c1);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+}
+
+.add-title,
+.edit-title {
+    color: var(--c2);
+    margin-bottom: 20px;
+}
+
+.form-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+}
+
+.input-field {
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid var(--c2);
+    margin-bottom: 10px;
+    width: 100%;
+}
+
+.submit-button {
+    background-color: var(--c3);
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.submit-button:hover {
+    background-color: var(--c4);
+}

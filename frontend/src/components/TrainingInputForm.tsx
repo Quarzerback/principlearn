@@ -1,9 +1,18 @@
-import {TrainingData} from "../types/trainingData";
-import {Intensity, Pitch} from "../types/enums";
+import { TrainingData } from "../types/trainingData";
+import { Intensity, Pitch } from "../types/enums";
+import React from "react";
+import {
+    TextField,
+    MenuItem,
+    Button,
+    Grid,
+    Container,
+    Typography
+} from "@mui/material";
 
 type TrainingFormProps = {
     trainingData: TrainingData;
-    handleChange: (event: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => void;
+    handleChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
     handleSubmit: (event: React.FormEvent<HTMLFormElement>) => void;
     buttonName: string;
     headlineName: string;
@@ -11,48 +20,96 @@ type TrainingFormProps = {
 
 export default function TrainingInputForm(props: Readonly<TrainingFormProps>) {
     return (
-        <div>
-            <h2>{props.headlineName}</h2>
+        <Container sx={{ marginTop: 4, marginBottom: 4 }}>
+            <Typography variant="h4" gutterBottom>{props.headlineName}</Typography>
             <form onSubmit={props.handleSubmit}>
-                <label htmlFor="date">Date:</label>
-                <input type="date" id="date" name="date" value={props.trainingData.date} onChange={props.handleChange}
-                       required/><br/>
-
-                <label htmlFor="startTime">Start Time:</label>
-                <input type="time" id="startTime" name="startTime" value={props.trainingData.startTime}
-                       onChange={props.handleChange} required/><br/>
-
-                <label htmlFor="endTime">End Time:</label>
-                <input type="time" id="endTime" name="endTime" value={props.trainingData.endTime}
-                       onChange={props.handleChange}
-                       required/><br/>
-
-                <label htmlFor="specificCoachingPoints">Specific Coaching Points:</label>
-                <input type="text" id="specificCoachingPoints" name="specificCoachingPoints"
-                       value={props.trainingData.specificCoachingPoints} onChange={props.handleChange}/><br/>
-
-                <label htmlFor="neededMaterial">Needed Material:</label>
-                <input type="text" id="neededMaterial" name="neededMaterial" value={props.trainingData.neededMaterial}
-                       onChange={props.handleChange}/><br/>
-
-                <select id="intensity" name="intensity" value={props.trainingData.intensity ?? ''}
-                        onChange={props.handleChange}
-                        required>
-                    <option value="">Select Intensity</option>
-                    {Object.values(Intensity).map((value) => (
-                        <option key={value} value={value}>{value}</option>
-                    ))}
-                </select><br/>
-
-                <select id="pitch" name="pitch" value={props.trainingData.pitch ?? ''} onChange={props.handleChange}
-                        required>
-                    <option value="">Select Pitch</option>
-                    {Object.values(Pitch).map((value) => (
-                        <option key={value} value={value}>{value}</option>
-                    ))}
-                </select><br/>
-                <button type="submit">{props.buttonName}</button>
+                <Grid container spacing={2}>
+                    <Grid item xs={12} sm={6}>
+                        <TextField
+                            fullWidth
+                            type="date"
+                            label="Date"
+                            InputLabelProps={{ shrink: true }}
+                            name="date"
+                            value={props.trainingData.date}
+                            onChange={props.handleChange}
+                        />
+                    </Grid>
+                    <Grid item xs={12} sm={6}>
+                        <TextField
+                            fullWidth
+                            type="time"
+                            label="Start Time"
+                            InputLabelProps={{ shrink: true }}
+                            name="startTime"
+                            value={props.trainingData.startTime}
+                            onChange={props.handleChange}
+                        />
+                    </Grid>
+                    <Grid item xs={12} sm={6}>
+                        <TextField
+                            fullWidth
+                            type="time"
+                            label="End Time"
+                            InputLabelProps={{ shrink: true }}
+                            name="endTime"
+                            value={props.trainingData.endTime}
+                            onChange={props.handleChange}
+                        />
+                    </Grid>
+                    <Grid item xs={12} sm={6}>
+                        <TextField
+                            fullWidth
+                            label="Specific Coaching Points"
+                            name="specificCoachingPoints"
+                            value={props.trainingData.specificCoachingPoints}
+                            onChange={props.handleChange}
+                        />
+                    </Grid>
+                    <Grid item xs={12} sm={6}>
+                        <TextField
+                            fullWidth
+                            label="Needed Material"
+                            name="neededMaterial"
+                            value={props.trainingData.neededMaterial}
+                            onChange={props.handleChange}
+                        />
+                    </Grid>
+                    <Grid item xs={12} sm={6}>
+                        <TextField
+                            select
+                            fullWidth
+                            label="Intensity"
+                            name="intensity"
+                            value={props.trainingData.intensity ?? ''}
+                            onChange={props.handleChange}
+                        >
+                            {Object.values(Intensity).map(intensity => (
+                                <MenuItem key={intensity} value={intensity}>
+                                    {intensity}
+                                </MenuItem>
+                            ))}
+                        </TextField>
+                    </Grid>
+                    <Grid item xs={12} sm={6}>
+                        <TextField
+                            select
+                            fullWidth
+                            label="Pitch"
+                            name="pitch"
+                            value={props.trainingData.pitch ?? ''}
+                            onChange={props.handleChange}
+                        >
+                            {Object.values(Pitch).map(pitch => (
+                                <MenuItem key={pitch} value={pitch}>
+                                    {pitch}
+                                </MenuItem>
+                            ))}
+                        </TextField>
+                    </Grid>
+                </Grid>
+                <Button type="submit" variant="contained" color="primary" sx={{ marginTop: 2 }}>{props.buttonName}</Button>
             </form>
-        </div>
+        </Container>
     );
 }

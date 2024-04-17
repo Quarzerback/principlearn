@@ -1,6 +1,7 @@
 import {TrainingData} from "../types/trainingData.ts";
 import TableTraining from "../components/TableTraining.tsx";
 import {useNavigate} from "react-router-dom";
+import {Button} from "@mui/material";
 
 type TrainingProps={
     fetchData:()=>void;
@@ -17,7 +18,8 @@ export default function Training(props: Readonly<TrainingProps>) {
         <div>
             <h1>Trainings</h1>
             <TableTraining trainings={props.trainings}/>
-            <button onClick={handleNewTraining}>New Training</button>
-        </div>
+            <Button variant="contained" color="primary" onClick={handleNewTraining}>
+                New Training
+            </Button>        </div>
     );
 }
